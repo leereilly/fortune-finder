@@ -1,0 +1,2 @@
+Qualcomm
+178
