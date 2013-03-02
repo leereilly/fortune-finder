@@ -1,7 +1,7 @@
 require 'helper'
 
 class TestFortuneFinder < Test::Unit::TestCase
-  should "probably rename this file and start testing for real" do
-    flunk "hey buddy, you should probably rename this file and start testing for real"
+  should "get a response for a domain name" do
+    assert_equal Fortune::lookup('att.com'), {:rank => 11, :name => 'AT&T'}
   end
 end
