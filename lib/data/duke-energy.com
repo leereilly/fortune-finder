@@ -1,2 +1,0 @@
-Duke Energy
-186

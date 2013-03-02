@@ -1,2 +1,0 @@
-Sears Holdings
-65

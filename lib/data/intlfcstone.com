@@ -1,2 +1,0 @@
-INTL FCStone
-30

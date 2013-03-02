@@ -1,2 +1,0 @@
-Northrop Grumman
-104

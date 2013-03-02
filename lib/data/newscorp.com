@@ -1,2 +1,0 @@
-News Corp.
-91

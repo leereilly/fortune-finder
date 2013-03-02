@@ -1,2 +1,0 @@
-Biogen Idec
-476

@@ -1,2 +1,0 @@
-Abbott Laboratories
-71

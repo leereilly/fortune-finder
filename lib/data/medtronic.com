@@ -1,2 +1,0 @@
-Medtronic
-164

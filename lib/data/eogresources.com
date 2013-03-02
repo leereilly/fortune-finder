@@ -1,2 +1,0 @@
-EOG Resources
-263

@@ -1,2 +1,0 @@
-Devon Energy
-232

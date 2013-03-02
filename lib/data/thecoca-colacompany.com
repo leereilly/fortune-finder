@@ -1,2 +1,0 @@
-Coca-Cola
-59

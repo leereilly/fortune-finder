@@ -1,2 +1,0 @@
-CVS Caremark
-18

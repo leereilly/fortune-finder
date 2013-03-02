@@ -1,2 +1,0 @@
-Valero Energy
-12

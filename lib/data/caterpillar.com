@@ -1,2 +1,0 @@
-Caterpillar
-46

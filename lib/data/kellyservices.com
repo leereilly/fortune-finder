@@ -1,2 +1,0 @@
-Kelly Services
-441

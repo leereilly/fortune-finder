@@ -1,2 +1,0 @@
-Colgate-Palmolive
-155

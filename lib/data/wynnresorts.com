@@ -1,2 +1,0 @@
-Wynn Resorts
-462

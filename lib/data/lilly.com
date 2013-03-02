@@ -1,2 +1,0 @@
-Eli Lilly
-119

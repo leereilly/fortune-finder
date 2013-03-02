@@ -1,2 +1,0 @@
-Nordstrom
-242

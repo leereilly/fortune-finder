@@ -1,2 +1,0 @@
-Verizon Communications
-15

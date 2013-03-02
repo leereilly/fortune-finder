@@ -1,2 +1,0 @@
-Global Partners
-182

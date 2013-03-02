@@ -1,2 +1,0 @@
-General Electric
-6

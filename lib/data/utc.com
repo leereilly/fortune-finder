@@ -1,2 +1,0 @@
-United Technologies
-48

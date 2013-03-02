@@ -1,2 +1,0 @@
-Navistar International
-193

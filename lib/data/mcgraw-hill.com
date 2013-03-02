@@ -1,2 +1,0 @@
-McGraw-Hill
-384

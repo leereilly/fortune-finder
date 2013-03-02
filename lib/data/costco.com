@@ -1,2 +1,0 @@
-Costco Wholesale
-24

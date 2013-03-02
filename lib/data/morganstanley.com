@@ -1,2 +1,0 @@
-Morgan Stanley
-68

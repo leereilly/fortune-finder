@@ -1,2 +1,0 @@
-CVR Energy
-477

@@ -1,2 +1,0 @@
-Johnson & Johnson
-42

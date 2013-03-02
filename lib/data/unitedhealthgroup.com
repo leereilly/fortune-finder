@@ -1,2 +1,0 @@
-UnitedHealth Group
-22

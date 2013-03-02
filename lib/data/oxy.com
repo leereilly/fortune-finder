@@ -1,2 +1,0 @@
-Occidental Petroleum
-122

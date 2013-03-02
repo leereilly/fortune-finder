@@ -1,2 +1,0 @@
-Qualcomm
-178

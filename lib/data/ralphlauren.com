@@ -1,2 +1,0 @@
-Ralph Lauren
-431

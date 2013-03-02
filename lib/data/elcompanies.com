@@ -1,2 +1,0 @@
-Estée Lauder
-290
