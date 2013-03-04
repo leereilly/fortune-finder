@@ -1,2 +1,0 @@
-Chesapeake Energy
-229

@@ -1,2 +1,0 @@
-Avery Dennison
-367

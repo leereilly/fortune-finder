@@ -1,2 +1,0 @@
-Celanese
-368

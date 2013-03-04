@@ -1,2 +1,0 @@
-Omnicom Group
-196

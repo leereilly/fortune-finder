@@ -1,2 +1,0 @@
-Anadarko Petroleum
-192

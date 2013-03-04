@@ -1,2 +1,0 @@
-Walgreen
-32

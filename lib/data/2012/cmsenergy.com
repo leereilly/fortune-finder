@@ -1,2 +1,0 @@
-CMS Energy
-380

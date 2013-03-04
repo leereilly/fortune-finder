@@ -1,2 +1,0 @@
-Berkshire Hathaway
-7

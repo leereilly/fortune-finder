@@ -1,2 +1,0 @@
-Citigroup
-20

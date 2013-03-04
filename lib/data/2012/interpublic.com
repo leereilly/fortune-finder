@@ -1,2 +1,0 @@
-Interpublic Group
-358

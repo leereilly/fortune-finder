@@ -1,2 +1,0 @@
-Exxon Mobil
-1

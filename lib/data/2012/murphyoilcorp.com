@@ -1,2 +1,0 @@
-Murphy Oil
-98

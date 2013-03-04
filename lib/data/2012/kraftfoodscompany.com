@@ -1,2 +1,0 @@
-Kraft Foods
-50

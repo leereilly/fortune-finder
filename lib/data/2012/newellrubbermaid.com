@@ -1,2 +1,0 @@
-Newell Rubbermaid
-414

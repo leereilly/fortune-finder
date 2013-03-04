@@ -1,2 +1,0 @@
-Applied Materials
-251

@@ -1,2 +1,0 @@
-Avon Products
-234

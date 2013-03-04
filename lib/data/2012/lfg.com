@@ -1,2 +1,0 @@
-Lincoln National
-247

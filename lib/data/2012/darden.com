@@ -1,2 +1,0 @@
-Darden Restaurants
-342

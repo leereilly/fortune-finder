@@ -1,2 +1,0 @@
-Xcel Energy
-246

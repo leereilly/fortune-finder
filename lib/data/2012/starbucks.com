@@ -1,2 +1,0 @@
-Starbucks
-227

@@ -1,2 +1,0 @@
-NRG Energy
-284

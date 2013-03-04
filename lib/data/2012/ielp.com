@@ -1,2 +1,0 @@
-Icahn Enterprises
-223

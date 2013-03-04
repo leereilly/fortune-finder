@@ -1,2 +1,0 @@
-Ross Stores
-299

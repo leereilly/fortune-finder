@@ -1,2 +1,0 @@
-Baxter International
-195

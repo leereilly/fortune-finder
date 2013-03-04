@@ -1,2 +1,0 @@
-Texas Instruments
-200

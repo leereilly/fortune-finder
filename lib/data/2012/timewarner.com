@@ -1,2 +1,0 @@
-Time Warner
-103

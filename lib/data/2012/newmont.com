@@ -1,2 +1,0 @@
-Newmont Mining
-257

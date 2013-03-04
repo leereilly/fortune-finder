@@ -1,2 +1,0 @@
-Dow Chemical
-47

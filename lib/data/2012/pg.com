@@ -1,2 +1,0 @@
-Procter & Gamble
-27

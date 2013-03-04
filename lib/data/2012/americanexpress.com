@@ -1,2 +1,0 @@
-American Express
-95
