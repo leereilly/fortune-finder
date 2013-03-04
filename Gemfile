@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "public_suffix", "~> 1.2.0"
+gem "toml", "~> 0.0.2"
 
 group :development do
   gem "shoulda", ">= 0"
