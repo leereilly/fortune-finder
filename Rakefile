@@ -21,7 +21,8 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Look up Fortune 500 companies based on a domain name or email address}
   gem.email = "lee@leereilly.net"
   gem.authors = ["Lee Reilly"]
-  # dependencies defined in Gemfile
+  gem.post_install_message = "*******************************************************************************\n\n  Thank you for installing the fortune-finder gem!\n\n  CONTRIBUTIONS GRATEFULLY ACCEPTED! Please consider contributing by looking at\n  https://github.com/leereilly/fortune-finder/blob/master/CONTRIBUTING.md for\n  ideas.\n\n*******************************************************************************"
+
 end
 Jeweler::RubygemsDotOrgTasks.new
 
