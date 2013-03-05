@@ -14,6 +14,8 @@ module FortuneFinder
 
         if File.symlink?(File.expand_path(__FILE__+"/../../data/2012/#{domain}.toml"))
           @alias = true
+        else
+          @alias = false
         end
       rescue Error => e
         puts e.inspect
