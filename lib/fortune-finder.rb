@@ -2,7 +2,7 @@ require 'public_suffix'
 require 'toml'
 require 'fortune-finder/record'
 
-module Fortune
+module FortuneFinder
   class << self
     # Look up a domain name to see if it's the Fortune 2000 list.
     #
