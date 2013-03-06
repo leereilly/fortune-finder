@@ -18,7 +18,6 @@ gem 'fortune-finder', '~> 0.1.1'
 
 ```ruby
 
-<<<<<<< HEAD
 record = FortuneFinder::lookup 'exxonmobil.com'
 # => <FortuneFinder::Record:0x007fca82a46060>
 
