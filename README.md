@@ -1,4 +1,8 @@
-The Fortune 500 is an annual list compiled and published by Fortune magazine that ranks the top 500 U.S. corporations as ranked by their gross revenue after various adjustments are made. Use this gem to ook up Fortune 500 companies based on a domain name or email address.
+The Fortune 500 is an annual list compiled and published by Fortune magazine that ranks the top 500 U.S. corporations as ranked by their gross revenue after various adjustments are made. Use this gem to look up Fortune 500 companies based on a domain name or email address and generare reports / say things like...
+
+> :bar_chart: Over **25%** of the **Fortune 500** are using our product
+
+> :chart_with_upwards_trend: We have customers in  **all** of the **Fortune 100** companies
 
 # Installation
 
@@ -34,8 +38,8 @@ record.alias
 It'll work with email addresses, subdomains and more e.g.
 
 ```ruby
-FortuneFinder::lookup('www.weir.co.uk').rank
-# => 1749
+FortuneFinder::lookup('www.oracle.co.uk').rank
+# => 82
 
 FortuneFinder::lookup('william.gates@microsoft.com').rank
 # 37
@@ -69,7 +73,7 @@ FortuneFinder::lookup('paypal.com').domain
 
 # Limitations
 
-* There may be cases when the company you're lookup up is a subsidiary of a Fortune 500 company that has a different domain name e.g. eBay is a Fortune 500 company identified primarily with `ebayinc.com`, but has many associated domains / subsidiaries like `ebay.com` and `paypal.com`. Using the power of Git, GitHub and TOML you can identify those relationships - please read the [contribution guidelines](/CONTRIBUTING.md) if you'd like to help.
+* There may be cases where the company you're looking up up is a subsidiary of a Fortune 500 company that has a different domain name e.g. eBay is a Fortune 500 company identified primarily with `ebayinc.com`, but has many associated domains / subsidiaries like `ebay.com` and `paypal.com`. Using the power of Git, GitHub and TOML you can help identify those relationships. Please read the [contribution guidelines](/CONTRIBUTING.md) if you'd like to help.
 
 **Data source(s):**
 * http://money.cnn.com/magazines/fortune/fortune500/2012/full_list/
