@@ -44,7 +44,7 @@ FortuneFinder::lookup('https://developer.apple.com/devcenter/ios/checklist/').ra
 # => 17
 ```
 
-It'll also work with aliases or subsidiaries, but I'll need *your* help (see [contribution guidelines](/CONTRIBUTIONS.md) if you're interested).
+It'll also work with aliases or subsidiaries, but I'll need *your* help (see [contribution guidelines](/CONTRIBUTING.md) if you're interested).
 
 ```ruby
 FortuneFinder::lookup('ebayinc.com').rank
@@ -69,7 +69,7 @@ FortuneFinder::lookup('paypal.com').domain
 
 # Limitations
 
-* There may be cases when the company you're lookup up is a subsidiary of a Fortune 500 company that has a different domain name e.g. eBay is a Fortune 500 company identified primarily with `ebayinc.com`, but has many associated domains / subsidiaries like `ebay.com` and `paypal.com`. Using the power of Git, GitHub and TOML you can identify those relationships - please read the [contribution guidelines](/CONTRIBUTIONS.md) if you'd like to help.
+* There may be cases when the company you're lookup up is a subsidiary of a Fortune 500 company that has a different domain name e.g. eBay is a Fortune 500 company identified primarily with `ebayinc.com`, but has many associated domains / subsidiaries like `ebay.com` and `paypal.com`. Using the power of Git, GitHub and TOML you can identify those relationships - please read the [contribution guidelines](/CONTRIBUTING.md) if you'd like to help.
 
 **Data source(s):**
 * http://money.cnn.com/magazines/fortune/fortune500/2012/full_list/
