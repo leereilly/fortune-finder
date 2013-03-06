@@ -1,4 +1,4 @@
-# Contributing to Forbes Finder
+# Contributing to Fortune Finder
 
 ## Creating aliases / subsidiaries
 
