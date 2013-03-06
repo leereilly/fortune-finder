@@ -34,8 +34,8 @@ record.alias
 It'll work with email addresses, subdomains and more e.g.
 
 ```ruby
-FortuneFinder::lookup('www.weir.co.uk').rank
-# => 1749
+FortuneFinder::lookup('www.oracle.co.uk').rank
+# => 82
 
 FortuneFinder::lookup('william.gates@microsoft.com').rank
 # 37
