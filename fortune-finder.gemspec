@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fortune-finder"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Lee Reilly"]
-  s.date = "2013-03-04"
+  s.date = "2013-03-06"
   s.description = "Look up Fortune 500 companies based on a domain name or email address"
   s.email = "lee@leereilly.net"
   s.extra_rdoc_files = [
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "fortune-finder.gemspec",
     "lib/data/2012/3m.com.toml",
     "lib/data/2012/3m.com.toml.toml",
     "lib/data/2012/53.com.toml",
@@ -191,6 +192,7 @@ Gem::Specification.new do |s|
     "lib/data/2012/dupont.com.toml",
     "lib/data/2012/eastman.com.toml",
     "lib/data/2012/eaton.com.toml",
+    "lib/data/2012/ebay.com.toml",
     "lib/data/2012/ebayinc.com.toml",
     "lib/data/2012/ecolab.com.toml",
     "lib/data/2012/edison.com.toml",
@@ -376,6 +378,7 @@ Gem::Specification.new do |s|
     "lib/data/2012/paccar.com.toml",
     "lib/data/2012/pacificlife.com.toml",
     "lib/data/2012/parker.com.toml",
+    "lib/data/2012/paypapl.com.toml",
     "lib/data/2012/pb.com.toml",
     "lib/data/2012/peabodyenergy.com.toml",
     "lib/data/2012/penskeautomotive.com.toml",
