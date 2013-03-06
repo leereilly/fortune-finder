@@ -11,22 +11,22 @@ The Fortune 500 is an annual list compiled and published by Fortune magazine tha
 
 ```ruby
 
-Fortune::lookup 'exxonmobil.com'
+FortuneFinder::lookup 'exxonmobil.com'
 # => {:rank => 1, :name => 'Exxon Mobil'}
 
-Fortune::lookup 'www.weir.co.uk'
+FortuneFinder::lookup 'www.weir.co.uk'
 # => {:rank => 1749, :name => 'Weir Group'}
 
-Fortune::lookup 'william.gates@microsoft.com'
+FortuneFinder::lookup 'william.gates@microsoft.com'
 # => {:rank => 42, :name => 'Microsoft'}
 
-Fortune::lookup 'https://developer.apple.com/devcenter/ios/checklist/'
+FortuneFinder::lookup 'https://developer.apple.com/devcenter/ios/checklist/'
 # => {:rank => 22, :name => 'Microsoft'}
 
-Fortune::lookup 'UltraInfoMegaTechCorp.com'
+FortuneFinder::lookup 'UltraInfoMegaTechCorp.com'
 # => nil
 
-Fortune::lookup 'POTATO!'
+FortuneFinder::lookup 'POTATO!'
 # => nil
 ```
 
