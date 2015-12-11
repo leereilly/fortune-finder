@@ -10,6 +10,7 @@ group :development do
   gem "typhoeus", "~> 0.8"
   gem "nokogiri", "~> 1.6"
   gem "pry", "~> 0.10"
+  gem 'htmlentities', "~> 4.3"
 end
 
 group :test do

@@ -19,10 +19,24 @@ class FortuneFinder
     def lookup(domain)
       FortuneFinder.new(domain).lookup
     end
+
+    def all
+      @all ||= Dir["#{domains_path}/*.toml"].map { |d| lookup File.basename(d, ".toml") }.sort_by { |d| d.rank }
+    end
   end
 
   def valid?
     record.exists?
+  end
+  alias_method :ranked?, :valid?
+  alias_method :fortune1000?, :valid?
+
+  def fortune100?
+    ranked? && record.rank <= 100
+  end
+
+  def fortune500?
+    ranked? && record.rank <= 500
   end
 
   # Look up a domain name to see if it's the Fortune 2000 list.
@@ -30,8 +44,8 @@ class FortuneFinder
   # Returns a hash with the ranking and company name if one is found e.g.
   #   #=> {:rank => 1, :name => 'GitHub'}
   # returns nil if nothing is found.
-  def lookup
-    FortuneFinder::Record.new(domain)
+  def record
+    @record ||= FortuneFinder::Record.new(domain)
   end
-  alias_method :record, :lookup
+  alias_method :lookup, :record
 end
