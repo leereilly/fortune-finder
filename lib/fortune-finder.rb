@@ -1,39 +1,37 @@
 require 'public_suffix'
 require 'toml'
+require 'naughty_or_nice'
 require_relative 'fortune-finder/record'
 
-module FortuneFinder
+class FortuneFinder
+  include NaughtyOrNice
+
+  YEAR = 2015
+
   class << self
-    # Look up a domain name to see if it's the Fortune 2000 list.
-    #
-    # Returns a hash with the ranking and company name if one is found e.g.
-    #   #=> {:rank => 1, :name => 'GitHub'}
-    # returns nil if nothing is found.
+
+    alias_method :ranked?, :valid?
+
+    def domains_path
+      @domains_path ||= File.expand_path "./data/#{YEAR}", File.dirname(__FILE__)
+    end
+
     def lookup(domain)
-      return if domain.nil? or domain.index('.') < 1 or !ranked?(domain)
-      domain = cleanse_domain domain
-      record = FortuneFinder::Record.new(domain)
-    end
-
-     # Returns true if a file is found matching the domain; false otherwise.
-    def ranked?(domain)
-      domain = cleanse_domain(domain)
-      File.exists?(File.expand_path(__FILE__+"/../data/2015/#{domain}.toml"))
-    end
-
-    # Clean the domain of things like 'http(s)://', 'www',
-    # '?foo=bar', etc.
-    #
-    # Return the domain string.
-    def cleanse_domain(domain)
-      domain.downcase!
-      domain = domain.sub(/^https?\:\/\//, '').sub(/^www./,'')
-      domain = domain.split("/").first
-      domain = domain.split("@").last
-
-      domain = PublicSuffix.parse(domain)
-      domain = "#{domain.sld}.#{domain.tld}"
-      domain
+      FortuneFinder.new(domain).lookup
     end
   end
+
+  def valid?
+    record.exists?
+  end
+
+  # Look up a domain name to see if it's the Fortune 2000 list.
+  #
+  # Returns a hash with the ranking and company name if one is found e.g.
+  #   #=> {:rank => 1, :name => 'GitHub'}
+  # returns nil if nothing is found.
+  def lookup
+    FortuneFinder::Record.new(domain)
+  end
+  alias_method :record, :lookup
 end

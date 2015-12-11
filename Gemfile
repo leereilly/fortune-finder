@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem "public_suffix", "~> 1.5"
 gem "toml", "~> 0.1"
+gem "naughty_or_nice", "~> 2.0"
 
 group :development do
   gem "rdoc", "~> 3.12"

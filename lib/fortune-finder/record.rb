@@ -1,25 +1,36 @@
-module FortuneFinder
+class FortuneFinder
   class Record
     attr_accessor :domain
-    attr_accessor :name
-    attr_accessor :rank
-    attr_accessor :alias
 
     def initialize(domain)
-      begin
-        toml_record = TOML.load_file(File.expand_path(__FILE__+"/../../data/2015/#{domain}.toml"))
-        @name       = toml_record["name"]
-        @rank       = toml_record["rank"]
-        @domain     = toml_record["domain"]
+      @domain = domain
+    end
 
-        if File.symlink?(File.expand_path(__FILE__+"/../../data/2015/#{domain}.toml"))
-          @alias = true
-        else
-          @alias = false
-        end
-      rescue Error => e
-        puts e.inspect
-      end
+    def exists?
+      @exits ||= File.exists? file_path
+    end
+
+    def name
+      @name ||= toml["name"] if exists?
+    end
+
+    def rank
+      @rank ||= toml["rank"] if exists?
+    end
+
+    def file_path
+      @file_path ||= File.expand_path "#{domain}.toml", FortuneFinder.domains_path
+    end
+
+    def alias?
+      @alias ||= File.symlink? file_path
+    end
+    alias_method :alias, :alias?
+
+    private
+
+    def toml
+       @toml ||= TOML.load_file file_path
     end
   end
 end
