@@ -1,6 +1,6 @@
 require 'public_suffix'
 require 'toml'
-require 'fortune-finder/record'
+require_relative 'fortune-finder/record'
 
 module FortuneFinder
   class << self
@@ -18,7 +18,7 @@ module FortuneFinder
      # Returns true if a file is found matching the domain; false otherwise.
     def ranked?(domain)
       domain = cleanse_domain(domain)
-      File.exists?(File.expand_path(__FILE__+"/../data/2012/#{domain}.toml"))
+      File.exists?(File.expand_path(__FILE__+"/../data/2015/#{domain}.toml"))
     end
 
     # Clean the domain of things like 'http(s)://', 'www',
