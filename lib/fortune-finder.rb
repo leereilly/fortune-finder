@@ -1,39 +1,58 @@
 require 'public_suffix'
 require 'toml'
-require 'fortune-finder/record'
+require 'naughty_or_nice'
+require_relative 'fortune-finder/record'
 
-module FortuneFinder
+class FortuneFinder
+  include NaughtyOrNice
+
+  YEAR = 2015
+
   class << self
-    # Look up a domain name to see if it's the Fortune 2000 list.
-    #
-    # Returns a hash with the ranking and company name if one is found e.g.
-    #   #=> {:rank => 1, :name => 'GitHub'}
-    # returns nil if nothing is found.
+
+    alias_method :ranked?, :valid?
+
+    def domains_path
+      @domains_path ||= File.expand_path "./data/#{YEAR}", File.dirname(__FILE__)
+    end
+
     def lookup(domain)
-      return if domain.nil? or domain.index('.') < 1 or !ranked?(domain)
-      domain = cleanse_domain domain
-      record = FortuneFinder::Record.new(domain)
+      FortuneFinder.new(domain).lookup
     end
 
-     # Returns true if a file is found matching the domain; false otherwise.
-    def ranked?(domain)
-      domain = cleanse_domain(domain)
-      File.exists?(File.expand_path(__FILE__+"/../data/2012/#{domain}.toml"))
-    end
-
-    # Clean the domain of things like 'http(s)://', 'www',
-    # '?foo=bar', etc.
-    #
-    # Return the domain string.
-    def cleanse_domain(domain)
-      domain.downcase!
-      domain = domain.sub(/^https?\:\/\//, '').sub(/^www./,'')
-      domain = domain.split("/").first
-      domain = domain.split("@").last
-
-      domain = PublicSuffix.parse(domain)
-      domain = "#{domain.sld}.#{domain.tld}"
-      domain
+    def all
+      @all ||= Dir["#{domains_path}/*.toml"].map { |d| lookup File.basename(d, ".toml") }.sort_by { |d| d.rank }
     end
   end
+
+  def valid?
+    !!record
+  end
+  alias_method :ranked?, :valid?
+  alias_method :fortune1000?, :valid?
+
+  def fortune50?
+    ranked? && record.rank <= 50
+  end
+
+  def fortune100?
+    ranked? && record.rank <= 100
+  end
+
+  def fortune500?
+    ranked? && record.rank <= 500
+  end
+
+  # Look up a domain name to see if it's the Fortune 2000 list.
+  #
+  # Returns a hash with the ranking and company name if one is found e.g.
+  #   #=> {:rank => 1, :name => 'GitHub'}
+  # returns nil if nothing is found.
+  def record
+    @record ||= begin
+      record = FortuneFinder::Record.new(domain)
+      record if record.exists?
+    end
+  end
+  alias_method :lookup, :record
 end

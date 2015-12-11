@@ -4,6 +4,7 @@ require 'typhoeus'
 require 'nokogiri'
 require 'json'
 require 'toml'
+require 'htmlentities'
 
 YEAR = 2015
 URL = "http://fortune.com/fortune500/"
@@ -38,10 +39,11 @@ json = script.sub(/^var fortune_wp_vars = /, "").sub(/;$/, "")
 logger.info "Got the JSON, parsing."
 
 # Build an array of company hashes from the JSON
+coder = HTMLEntities.new
 data = JSON.parse json
 companies = data["bootstrap"]["franchise"]["filtered_sorted_data"]
 companies = companies.map { |c| c.select { |k,v| ["title", "rank", "permalink"].include?(k) } }
-companies = companies.each { |c| c["name"] = c.delete("title") }
+companies = companies.each { |c| c["name"] = coder.decode c.delete("title") }
 logger.info "Found #{companies.count} companies. Retrieving domains."
 
 # Loop through each company in parallel to get their domain
