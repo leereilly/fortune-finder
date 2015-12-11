@@ -1,6 +1,5 @@
 class FortuneFinder
   class Record
-    attr_accessor :domain
 
     def initialize(raw_domain)
       @raw_domain = raw_domain.to_s
