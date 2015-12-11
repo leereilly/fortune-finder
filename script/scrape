@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+
+require 'typhoeus'
+require 'nokogiri'
+require 'json'
+require 'toml'
+
+YEAR = 2015
+URL = "http://fortune.com/fortune500/"
+TYPHOUES_OPTIONS = {
+  :followlocation => false,
+  :timeout => 60,
+  :accept_encoding => "gzip",
+  :headers => { # Note, we must give a non-Typhoues user agent for WP.com to respond
+    "User-Agent" => "Mozilla/5.0 (compatible; Fortune Finder; +https://github.com/benbalter/fortune-finder)"
+  }
+}
+
+logger = Logger.new(STDOUT)
+logger.info "Starting scrape"
+
+# Init our data dir
+data_dir = File.expand_path "../lib/data/#{YEAR}", File.dirname(__FILE__)
+FileUtils.rm_rf data_dir
+FileUtils.mkdir data_dir
+logger.info "Created #{data_dir}"
+
+# Grab the index from fortune.com
+logger.info "Pulling down the index"
+response = Typhoeus.get URL, TYPHOUES_OPTIONS
+raise "Couldn't retrieve #{URL}" unless response.success?
+logger.info "Got the page, looking for JSON."
+
+# Parse out the in-line JSON
+lines = response.body.split("\n")
+script = lines.find { |l| l =~ /^var fortune_wp_vars =/ }
+json = script.sub(/^var fortune_wp_vars = /, "").sub(/;$/, "")
+logger.info "Got the JSON, parsing."
+
+# Build an array of company hashes from the JSON
+data = JSON.parse json
+companies = data["bootstrap"]["franchise"]["filtered_sorted_data"]
+companies = companies.map { |c| c.select { |k,v| ["title", "rank", "permalink"].include?(k) } }
+companies = companies.each { |c| c["name"] = c.delete("title") }
+logger.info "Found #{companies.count} companies. Retrieving domains."
+
+# Loop through each company in parallel to get their domain
+Typhoeus::Config.memoize = true
+hydra = Typhoeus::Hydra.new
+companies.each do |company|
+  url = company.delete("permalink")
+  request = Typhoeus::Request.new url, TYPHOUES_OPTIONS
+
+  request.on_complete do |response|
+    logger.info "Got #{response.effective_url}"
+    raise "Coulnd't retrieve #{url}" unless response.success?
+
+    # The page takes forever for Nokogiri to parse, but we know the domain is going to
+    # be the only link where the href matches the text. Just use regex for speed.
+    # Note: Some domains have http:// in the link text, others dont
+    matches = response.body.match(/<a href="https?:\/\/([^"]+)" target="_blank">(https?:\/\/|www\.)([^<]+)<\/a>/)
+    raise "Couldn't find domain in the page" unless matches
+    domain = matches[1].sub(/^www\./, "").sub(/\/$/, "")
+    sanity_check = matches[3].sub(/^www\./, "").sub(/\/$/, "")
+    raise "#{domain} != #{sanity_check}" unless domain == sanity_check
+
+    # Get the company rank from the URL
+    matches = response.effective_url.match(/(\d+)\/?$/)
+    raise "Couldn't find rank" unless matches
+    rank = matches[1].to_i
+
+    # Find our company hash in the array by rank
+    company = companies.find { |c| c["rank"] == rank }
+    raise "couldn't find company from rank" unless company
+    company["domain"] = domain
+
+    # Write to the data dir
+    logger.info "Got #{company["name"]}. Writing."
+    filename = "#{domain}.toml"
+    toml = TOML::Generator.new(company).body
+    path = File.expand_path filename, data_dir
+    File.write(path, toml)
+  end
+
+  # Queue the request
+  hydra.queue(request)
+end
+
+# Run all requests in parallel
+hydra.run
+
+logger.info "Fin."

@@ -7,12 +7,12 @@ module FortuneFinder
 
     def initialize(domain)
       begin
-        toml_record = TOML.load_file(File.expand_path(__FILE__+"/../../data/2012/#{domain}.toml"))
+        toml_record = TOML.load_file(File.expand_path(__FILE__+"/../../data/2015/#{domain}.toml"))
         @name       = toml_record["name"]
         @rank       = toml_record["rank"]
         @domain     = toml_record["domain"]
 
-        if File.symlink?(File.expand_path(__FILE__+"/../../data/2012/#{domain}.toml"))
+        if File.symlink?(File.expand_path(__FILE__+"/../../data/2015/#{domain}.toml"))
           @alias = true
         else
           @alias = false
