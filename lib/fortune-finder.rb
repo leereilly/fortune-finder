@@ -26,10 +26,14 @@ class FortuneFinder
   end
 
   def valid?
-    record.exists?
+    !!record
   end
   alias_method :ranked?, :valid?
   alias_method :fortune1000?, :valid?
+
+  def fortune50?
+    ranked? && record.rank <= 50
+  end
 
   def fortune100?
     ranked? && record.rank <= 100
@@ -45,7 +49,10 @@ class FortuneFinder
   #   #=> {:rank => 1, :name => 'GitHub'}
   # returns nil if nothing is found.
   def record
-    @record ||= FortuneFinder::Record.new(domain)
+    @record ||= begin
+      record = FortuneFinder::Record.new(domain)
+      record if record.exists?
+    end
   end
   alias_method :lookup, :record
 end

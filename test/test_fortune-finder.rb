@@ -57,4 +57,23 @@ class TestFortuneFinder < Test::Unit::TestCase
     assert_equal 1, record.rank
     assert_equal 'Walmart', record.name
   end
+
+  should "know if a domain is fortune 50" do
+    assert FortuneFinder.new("walmart.com").fortune50?
+  end
+
+  should "know if a domain is fortune 100" do
+    assert FortuneFinder.new("aa.com").fortune100?
+
+  end
+
+  should "know if a domain is fortune 500" do
+    assert FortuneFinder.new("capitalone.com").fortune500?
+  end
+
+  should "not blow up on invalid domains" do
+    refute FortuneFinder.valid?("foo.invalid")
+    refute FortuneFinder.valid?("some phrase")
+    refute FortuneFinder.lookup("1234nonsense")
+  end
 end
