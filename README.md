@@ -1,4 +1,4 @@
-The Fortune 500 is an annual list compiled and published by Fortune magazine that ranks the top 500 U.S. corporations as ranked by their gross revenue after various adjustments are made. Use this gem to look up Fortune 500 companies based on a domain name or email address and generate reports / say things like...
+The Fortune 1000 is an annual list compiled and published by Fortune magazine that ranks the top 1000 U.S. corporations as ranked by their gross revenue after various adjustments are made. Use this gem to look up Fortune 1000 companies based on a domain name or email address and generate reports / say things like...
 
 > :bar_chart: Over **25%** of the **Fortune 500** are using our product
 
@@ -77,7 +77,3 @@ FortuneFinder::lookup('paypal.com').domain
 
 **Data source(s):**
 * http://money.cnn.com/magazines/fortune/fortune500/2012/full_list/
-
-
-
-
